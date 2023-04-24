@@ -1,9 +1,9 @@
 .page {
+  background: #000000;
   margin: auto;
   padding: 0;
-  background: #2a2c2f;
   font-family: "Inter", Arial, sans-serif;
   color: #ffffff;
   text-rendering: optimizeLegibility;
-  max-width: 1280px;
+  max-width: 880px;
 }
