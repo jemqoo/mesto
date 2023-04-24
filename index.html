@@ -76,7 +76,7 @@
             alt="Пейзаж"
           />
           <div class="element__info">
-            <h2 class="element__title">Карачаевск</h2>
+            <h2 class="element__title">Карачаево-Черкесия</h2>
             <button
               class="element__button element__button_active"
               type="button"
@@ -104,9 +104,33 @@
           </div>
         </article>
       </section>
+
       <footer class="footer">
         <p class="footer__copy">&copy; 2023 Юлия Солдатенкова</p>
       </footer>
+
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__but-close" type="button"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__inputs" name="inputs">
+            <input
+              class="popup__input popup__input_type_name"
+              name="name"
+              type="text"
+              placeholder="Имя"
+            />
+            <input
+              class="popup__input popup__input_type_job"
+              name="job"
+              type="text"
+              placeholder="О себе"
+            />
+            <button class="popup__but-save" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
     </main>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
