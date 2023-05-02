@@ -2,6 +2,7 @@
   all: unset;
   margin: 15px 22px;
   padding: 0;
+  padding-bottom: 13px;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

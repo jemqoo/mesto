@@ -1,17 +1,14 @@
 .popup__container {
-  margin: 0;
+  margin: auto;
   padding: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  transform: translate(-50%, -50%);
   background: #ffffff;
   border-radius: 10px;
   max-width: 282px;
-  height: 322px; /*если я ставлю здесь min, то попап растягивается и не имеет нужного размера*/
-  /*не поняла, как здесь центрировать иначе*/
-  left: 50%;
-  top: 50%;
+  min-height: 322px;
+  align-self: center;
 }
 @media screen and (min-width: 768px) {
   .popup__container {
