@@ -7,11 +7,14 @@
   line-height: 17px;
   color: #000000;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-  width: 238px;
+  max-width: 238px;
+}
+.popup__input:nth-child(1) {
+  margin-bottom: 30px;
 }
 @media screen and (min-width: 768px) {
   .popup__input {
     margin: 15px 36px;
-    width: 358px;
+    max-width: 358px;
   }
 }

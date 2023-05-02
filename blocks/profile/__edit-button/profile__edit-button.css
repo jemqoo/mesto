@@ -1,9 +1,9 @@
 .profile__edit-button {
   all: unset;
+  margin: 8px 0 0 10px;
   background: url(../../../images/Vector.svg);
   background-repeat: no-repeat;
   background-position: center;
-  align-self: flex-end;
   width: 18px;
   height: 18px;
   border: 1px solid #ffffff;

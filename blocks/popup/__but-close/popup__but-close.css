@@ -6,8 +6,8 @@
   height: 20px;
   background-repeat: no-repeat;
   background-position: center;
-  right: 0;
-  top: -37px;
+  top: -36px;
+  right: -1px;
   cursor: pointer;
 }
 .popup__but-close:hover {
@@ -15,9 +15,10 @@
 }
 @media screen and (min-width: 768px) {
   .popup__but-close {
-    width: 32px;
+    background: url(../../../images/CloseIcon2.svg);
+    top: -39px;
+    right: -40px;
     height: 32px;
-    right: -50px;
-    top: -42px;
+    width: 32px;
   }
 }
