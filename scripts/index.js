@@ -1,27 +1,27 @@
 //для попапа профиля
 const openEditButton = document.querySelector('.profile__edit-button');
-const closeEditButton = document.querySelector('.popup__edit-close-button');
+const closeEditButton = document.querySelector('.popup__edit-but-close');
 
 const popupEdit = document.querySelector('.popup_edit-profile');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__about');
 
-const formElement = document.querySelector('.popup__edit-form');
+const formElement = document.querySelector('.popup__inputs_edit-form');
 const nameInput = document.querySelector('.popup__input_description_name');
 const aboutInput = document.querySelector('.popup__input_description_about');
 
 //для попапа с добавлением и открытия фотографии
 const openAddButton = document.querySelector('.profile__add-button');
-const closeAddButton = document.querySelector('.popup__add-close-button');
+const closeAddButton = document.querySelector('.popup__add-but-close');
 const addButton = document.querySelector('popup__create-button');
 
 const fullPopup = document.querySelector('.popup_card');
 const fullImage = document.querySelector('.popup__image');
 const fullTitle = document.querySelector('.popup__title_card');
-const closeFullButton = document.querySelector('.popup__close-button_card');
+const closeFullButton = document.querySelector('.popup__but-close_card');
 
 const popupAdd = document.querySelector('.popup_add-place');
-const formAddElement = document.querySelector('.popup__add-form');
+const formAddElement = document.querySelector('.popup__inputs_add-form');
 const placeInput = document.querySelector('.popup__input_description_place');
 const linkInput = document.querySelector('.popup__input_description_link');
 
