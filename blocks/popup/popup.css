@@ -1,5 +1,5 @@
 .popup {
-  display: none;
+  display: flex;
   margin: 0;
   padding: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -9,4 +9,7 @@
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }

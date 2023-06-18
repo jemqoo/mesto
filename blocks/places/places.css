@@ -1,4 +1,4 @@
-.group {
+.places {
   margin: 36px auto 0;
   padding: 0;
   display: grid;
@@ -7,7 +7,7 @@
   justify-content: center;
 }
 @media screen and (min-width: 768px) {
-  .group {
+  .places {
     margin: 51px auto 0;
   }
 }
