@@ -30,8 +30,13 @@ const photoTemplate = document.getElementById('photo-template').content;
 const placesContainer = document.querySelector('.places');
 
 //открытие и закрытие попапов
-const switchPopup = (popup) => {
-  popup.classList.toggle('popup_open');
+
+function closePopup(popup) {
+  popup.classList.remove('popup_open');
+};
+
+function openPopup(popup) {
+  popup.classList.add('popup_open');
 };
 
 const handleInfo = () => {
@@ -48,7 +53,7 @@ const handleAddFormSubmit = (evt) => {
   };
 
   placesContainer.prepend(createPhotoElement(item))
-  switchPopup(popupAdd);
+  closePopup(popupAdd);
 }
 
 const handleEditFormSubmit = (evt) => {
@@ -57,7 +62,7 @@ const handleEditFormSubmit = (evt) => {
   profileName.textContent = nameInput.value;
   profileJob.textContent = aboutInput.value;
 
-  switchPopup(popupEdit);
+  closePopup(popupEdit);
 };
 
 // ф-ция для карточек
@@ -87,7 +92,7 @@ const createPhotoElement = (photoData) => {
     fullImage.src = photoData.link;
     fullImage.alt = photoData.name;
     fullTitle.textContent = photoData.name;
-    switchPopup(fullPopup);
+    openPopup(fullPopup);
 
   });
 
@@ -100,16 +105,15 @@ initialCards.forEach((photo) => {
 });
 
 // Слушатели: профиль
-openEditButton.addEventListener('click', () => {
-  switchPopup(popupEdit);
-  handleInfo();
-});
-closeEditButton.addEventListener('click', () => switchPopup(popupEdit));
+openEditButton.addEventListener('click', handleInfo); 
+openEditButton.addEventListener('click', () => openPopup(popupEdit));
+closeEditButton.addEventListener('click', () => closePopup(popupEdit));
 formElement.addEventListener('submit', handleEditFormSubmit);
 
 // Слушатели: карточки мест, добавление места, открытие фотографии
-openAddButton.addEventListener('click', () => switchPopup(popupAdd));
-closeAddButton.addEventListener('click', () => switchPopup(popupAdd));
+openAddButton.addEventListener('click', () => openPopup(popupAdd));
+closeAddButton.addEventListener('click', () => closePopup(popupAdd));
 popupAdd.addEventListener('submit', handleAddFormSubmit);
 
-closeFullButton.addEventListener('click', () => switchPopup(fullPopup));
+closeFullButton.addEventListener('click', () => closePopup(fullPopup));
+
