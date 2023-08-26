@@ -43,7 +43,7 @@ class Card{
   }
 
   _getTemplateClone(){
-    return document.querySelector(this._selectorTemplate).content.querySelector('.card-template').cloneNode(true);
+    return document.querySelector(this._selectorTemplate).content.querySelector('.card').cloneNode(true);
   }
 
   createCard(){
@@ -148,8 +148,8 @@ popupList.forEach(popup => {
   });
 });
 
-function addCard(container, newCard){
-  container.prepend(newCard);
+ function addCard(container, newCard){
+ container.prepend(newCard);
 }
 
 initialCards.forEach(function(item) {
