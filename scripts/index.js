@@ -1,5 +1,6 @@
 import initialCards from './constants.js'
 import Card from './Card.js'
+import FormValidator from './FormValidator.js'
 
 const popupList = document.querySelectorAll('.popup');
 /*imagePopup*/
@@ -114,53 +115,11 @@ const validationConfig = {
   formErrorActive: 'popup__error_active'
 };
 
-class FormValidator {
-  constructor(config, form){
-    console.log()
-    this._formInput = config.formInput;
-    this._formSubmit = config.formSubmit;
-    this._formInputInvalid = config.formInputInvalid;
-    this._formSubmitDisabled = config.formSubmitDisabled;
-    this._formErrorActive = config.formErrorActive;
-    this._form = form;
-    this._button = this._form.querySelector(`.${this._formSubmit}`);
-    this._inputList =  Array.from(this._form.querySelectorAll(`.${this._formInput}`));
-  }
-  _showInputError(errorTextElement, input){
-    input.classList.add(this._formErrorActive);
-    errorTextElement.textContent = input.validationMessage;
-  }
-  _hideInputError(errorTextElement, input){
-    input.classList.remove(this._formErrorActive);
-    errorTextElement.textContent = '';
-  }
-  _checkInputValidity(input){
-    const errorTextElement = this._form.querySelector(`.${input.id}-error`);
-    input.validity.vaild ? this._hideInputError(errorTextElement, input) : this._showInputError(errorTextElement, input);
-  }
-
-  _setEventListener(){
-    this._inputList.forEach(input => {
-      input.addEventListener('input', () => {
-        this._checkInputValidity(input);
-        // this._toggleButtonState();
-      })
-    })
-  }
-  
-  enableValidation(){
-    // console.log(this._inputList)
-    // console.log(this._button)
-    this._setEventListener();
-  }
-
-}
-
 const formPersonalDataValidator = new FormValidator(validationConfig, editForm);
-console.log(formPersonalDataValidator)
 formPersonalDataValidator.enableValidation()
 
-
+const formAddCardValidator = new FormValidator(validationConfig, addForm);
+formAddCardValidator.enableValidation()
 
 editButton.addEventListener('click', () => openProfilePopup(editPopup));
 
