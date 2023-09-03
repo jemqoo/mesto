@@ -59,8 +59,6 @@ const setEventListeners = (formElement, formInput, formSubmit, formInputInvalid,
   });
 };
 
-
-
 enableValidation({
   form: 'popup__form',
   formInput: 'popup__input',

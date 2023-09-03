@@ -1,4 +1,5 @@
 import initialCards from './constants.js'
+import Card from './Card.js'
 
 const popupList = document.querySelectorAll('.popup');
 /*imagePopup*/
@@ -7,6 +8,7 @@ const imagePopupTitle = imagePopup.querySelector('.popup__title_image');
 const imagePopupPicture = imagePopup.querySelector('.popup__image');
 const imagePopupClose = imagePopup.querySelector('.popup__close_image');
 /*editForm*/
+const formPersonalDataElement = document.querySelector('.popup__form');
 const editPopup = document.querySelector('.popup_edit');
 const editButton = document.querySelector('.profile__edit-button');
 const editForm = editPopup.querySelector('.popup__form_edit');
@@ -29,66 +31,14 @@ const cardTemplateContent = cardTemplate.content;
 const card = cardTemplateContent.querySelector('.card');
 const cardsContainer = document.querySelector('.cards');
 
-const cardCont = document.querySelector('.card');
+const selectorTemplate = '.card-template';
 
-const selectorTemplate = '#card-template';
-
-class Card{
-  constructor(cardData, selectorTemplate){
-    this._cardData=cardData;
-    this._link=cardData.link;
-    this._name=cardData.name;
-    this._selectorTemplate=selectorTemplate;
-    // this._openImagePopup=openImagePopup;
-  }
-
-  _getTemplateClone(){
-    return document.querySelector(this._selectorTemplate).content.querySelector('.card').cloneNode(true);
-  }
-
-  createCard(){
-    this._cloneElement = this._getTemplateClone();
-    this._imageElement = this._cloneElement.querySelector('.card__image');
-    this._likeIconElement = this._cloneElement.querySelector('.card__like-button');
-    this._trashElement = this._cloneElement.querySelector('.card__delete-button');
-    this._subTitle = this._cloneElement.querySelector('.card__title');
-    this._imageElement.src = this._link;
-    this._imageElement.alt = this._name;
-    this._subTitle.textContent =  this._name;
-
-    return this._cloneElement;
-  }
+function openImagePopup(cardData){
+  imagePopupTitle.textContent = cardData.name;
+  imagePopupPicture.src = cardData.link;
+  imagePopupPicture.alt = cardData.name;
+  openPopup(imagePopup);
 }
-
-// function createCard(name, link) {
-//   const newCard = card.cloneNode(true); /*cloneCardTemplate*/
-
-//   const newCardImage = newCard.querySelector('.card__image'); 
-//   newCardImage.src = link;
-//   newCardImage.alt = name;
-//   const newCardTitle = newCard.querySelector('.card__title');
-//   newCardTitle.textContent = name;
-
-//   const deleteButton = newCard.querySelector('.card__delete-button'); /*deleteButton*/
-//   deleteButton.addEventListener('click', function() {
-//     deleteButton.closest('.card').remove();
-//   })
-  
-//   const cardLike = newCard.querySelector('.card__like-button'); /*likeButton*/
-//   cardLike.addEventListener('click', function() {
-//     cardLike.classList.toggle('card__like-button_active');
-//   });
-
-//   const cardImage = newCard.querySelector('.card__image'); /*popupImageOpened*/
-//   cardImage.addEventListener('click', function() {
-//     imagePopupTitle.textContent = newCardTitle.textContent;
-//     imagePopupPicture.src = newCardImage.src;
-//     imagePopupPicture.alt = newCardTitle.textContent;
-//     openPopup(imagePopup);
-//   })
-
-//   return newCard
-// };
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -118,13 +68,16 @@ function changeProfileInfo(form) {
   closePopup(editPopup);
 };
 
-function createNewCard(form) {
+function createNewCard(item){
+  const newCard = new Card(item, selectorTemplate, openImagePopup);
+  const cardElement = newCard.createCard();
+  return cardElement;
+}
 
+function addCard(form) {
   form.preventDefault();
-  const placeNameValue = placeName.value;
-  const placeImageValue = placeImage.value;
-  const newCard = createCard(placeNameValue, placeImageValue);
-  cardsContainer.prepend(newCard);
+  const cardDataNameUrl = {name:  placeName.value, link: placeImage.value}
+  cardsContainer.prepend(createNewCard(cardDataNameUrl));
   
   closePopup(addPopup);
   addForm.reset();
@@ -148,16 +101,66 @@ popupList.forEach(popup => {
   });
 });
 
- function addCard(container, newCard){
- container.prepend(newCard);
+initialCards.forEach(function(item) {
+   cardsContainer.prepend(createNewCard(item));
+});
+
+const validationConfig = {
+  form: 'popup__form',
+  formInput: 'popup__input',
+  formInputInvalid: 'popup__input_invalid',
+  formSubmit: 'popup__submit',
+  formSubmitDisabled: 'popup__submit_disabled',
+  formErrorActive: 'popup__error_active'
+};
+
+class FormValidator {
+  constructor(config, form){
+    console.log()
+    this._formInput = config.formInput;
+    this._formSubmit = config.formSubmit;
+    this._formInputInvalid = config.formInputInvalid;
+    this._formSubmitDisabled = config.formSubmitDisabled;
+    this._formErrorActive = config.formErrorActive;
+    this._form = form;
+    this._button = this._form.querySelector(`.${this._formSubmit}`);
+    this._inputList =  Array.from(this._form.querySelectorAll(`.${this._formInput}`));
+  }
+  _showInputError(errorTextElement, input){
+    input.classList.add(this._formErrorActive);
+    errorTextElement.textContent = input.validationMessage;
+  }
+  _hideInputError(errorTextElement, input){
+    input.classList.remove(this._formErrorActive);
+    errorTextElement.textContent = '';
+  }
+  _checkInputValidity(input){
+    const errorTextElement = this._form.querySelector(`.${input.id}-error`);
+    input.validity.vaild ? this._hideInputError(errorTextElement, input) : this._showInputError(errorTextElement, input);
+  }
+
+  _setEventListener(){
+    this._inputList.forEach(input => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input);
+        // this._toggleButtonState();
+      })
+    })
+  }
+  
+  enableValidation(){
+    // console.log(this._inputList)
+    // console.log(this._button)
+    this._setEventListener();
+  }
+
 }
 
-initialCards.forEach(function(item) {
-   const newCard = new Card(item, selectorTemplate);
-   console.log(newCard);
+const formPersonalDataValidator = new FormValidator(validationConfig, editForm);
+console.log(formPersonalDataValidator)
+formPersonalDataValidator.enableValidation()
 
-   addCard(cardsContainer, newCard.createCard()); //вывод карточек
-});
+
 
 editButton.addEventListener('click', () => openProfilePopup(editPopup));
 
@@ -171,4 +174,4 @@ imagePopupClose.addEventListener('click', () => closePopup(imagePopup));
 
 editForm.addEventListener('submit', changeProfileInfo);
 
-addForm.addEventListener('submit', createNewCard);
+addForm.addEventListener('submit', addCard);
