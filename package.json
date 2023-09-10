@@ -1,0 +1,11 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "Одностраничный сайт [\"Mesto\"](https://jemqoo.github.io/mesto/ \"Ссылка на сайт\") - интерактивный проект с возможностью обновить имя и информацию о себе, а также ставить лайки на фотографии, добавлять и удалять места.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julia Soldatenkova",
+  "license": "ISC"
+}

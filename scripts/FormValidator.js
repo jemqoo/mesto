@@ -47,6 +47,7 @@ export default class FormValidator {
   }
 
   enableValidation() {
+    this._toggleButtonState();
     this._setEventListeners();
   }
 
