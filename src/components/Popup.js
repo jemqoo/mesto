@@ -14,7 +14,7 @@ export default class Popup {
     this.close();
   };
 
-  _handleVlickByOverlay = (event) => {
+  _handleClickByOverlay = (event) => {
     if (event.target === event.currentTarget) {
       this.close();
     }
@@ -22,7 +22,7 @@ export default class Popup {
 
   setEventListeners() {
     this._popupCloseButton.addEventListener("click", this._handleCloseButton);
-    this._popup.addEventListener("click", this._handleVlickByOverlay);
+    this._popup.addEventListener("click", this._handleClickByOverlay);
   }
 
   open() {

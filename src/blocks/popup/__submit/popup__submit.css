@@ -1,6 +1,6 @@
 .popup__submit {
   border: 0;
-  color: #FFF;
+  color: #fff;
   background-color: black;
   border-radius: 2px;
   font-weight: 400;
@@ -8,6 +8,7 @@
   line-height: 22px;
   min-height: 50px;
   cursor: pointer;
+  margin-top: 18px;
 }
 
 .popup__submit:hover {

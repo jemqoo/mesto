@@ -37,15 +37,13 @@ const section = new Section(
 
 section.addCardFromArray();
 
-const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
-  evt.preventDefault();
-  userInfo.setUserInfo(popupProfile.getInputValue());
+const popupProfile = new PopupWithForm(popupProfileSelector, () => {
+  userInfo.setUserInfo(popupProfile._getInputValues());
   popupProfile.close();
 });
 
-const popupAddCard = new PopupWithForm(popupAddCardSelector, (evt) => {
-  evt.preventDefault();
-  section.addItem(section.renderer(popupAddCard.getInputValue()));
+const popupAddCard = new PopupWithForm(popupAddCardSelector, () => {
+  section.addItem(section.renderer(popupAddCard._getInputValues()));
   popupAddCard.close();
 });
 
@@ -54,7 +52,10 @@ editButton.addEventListener("click", () => {
   popupProfile.open();
 });
 
-addButton.addEventListener("click", () => popupAddCard.open());
+addButton.addEventListener("click", () => {
+  formAddCardValidator.disableButton();
+  popupAddCard.open();
+});
 
 popupImage.setEventListeners();
 popupProfile.setEventListeners();
