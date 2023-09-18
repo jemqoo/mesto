@@ -19,3 +19,4 @@
 - DOM
 - ООП
 - Webpack
+- ES6 Modules

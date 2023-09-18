@@ -1,3 +1,4 @@
+import "./index.css";
 import {
   initialCards,
   addButton,
@@ -9,18 +10,15 @@ import {
   listsElementSelector,
   configInfo,
   validationConfig,
-} from "./scripts/utils/constants.js";
-import Card from "./scripts/components/Card.js";
-import FormValidator from "./scripts/components/FormValidator.js";
-import PopupWithImage from "./scripts/components/PopupWithImage.js";
-import Section from "./scripts/components/Section.js";
-import UserInfo from "./scripts/components/UserInfo.js";
-import PopupWithForm from "./scripts/components/PopupWithForm.js";
-
-const editPopup = document.querySelector(".popup_edit");
-const editForm = editPopup.querySelector(".popup__form_edit");
-const addPopup = document.querySelector(".popup_add");
-const addForm = addPopup.querySelector(".popup__form_add");
+  editForm,
+  addForm,
+} from "../utils/constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const userInfo = new UserInfo(configInfo);
 

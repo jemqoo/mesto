@@ -34,6 +34,11 @@ const cardTemplateSelector = ".card-template";
 const popupImageSelector = ".popup_image";
 const listsElementSelector = ".cards";
 
+const editPopup = document.querySelector(".popup_edit");
+const editForm = editPopup.querySelector(".popup__form_edit");
+const addPopup = document.querySelector(".popup_add");
+const addForm = addPopup.querySelector(".popup__form_add");
+
 const configInfo = {
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__subtitle",
@@ -59,4 +64,6 @@ export {
   listsElementSelector,
   configInfo,
   validationConfig,
+  editForm,
+  addForm,
 };
