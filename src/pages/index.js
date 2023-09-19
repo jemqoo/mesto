@@ -37,13 +37,14 @@ const section = new Section(
 
 section.addCardFromArray();
 
-const popupProfile = new PopupWithForm(popupProfileSelector, () => {
-  userInfo.setUserInfo(popupProfile._getInputValues());
-  popupProfile.close();
+const popupProfile = new PopupWithForm(popupProfileSelector, (inputValues) => {
+  userInfo.setUserInfo(inputValues);
+  popu;
+  pProfile.close();
 });
 
-const popupAddCard = new PopupWithForm(popupAddCardSelector, () => {
-  section.addItem(section.renderer(popupAddCard._getInputValues()));
+const popupAddCard = new PopupWithForm(popupAddCardSelector, (inputValues) => {
+  section.addItem(section.renderer(inputValues));
   popupAddCard.close();
 });
 
