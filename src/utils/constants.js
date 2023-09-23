@@ -27,6 +27,7 @@ const initialCards = [
 
 const addButton = document.querySelector(".profile__add-button");
 const editButton = document.querySelector(".profile__edit-button");
+// const editAvatar = document.querySelector(".profile__edit-button");
 
 const popupProfileSelector = ".popup_edit";
 const popupAddCardSelector = ".popup_add";
@@ -38,10 +39,13 @@ const editPopup = document.querySelector(".popup_edit");
 const editForm = editPopup.querySelector(".popup__form_edit");
 const addPopup = document.querySelector(".popup_add");
 const addForm = addPopup.querySelector(".popup__form_add");
+const editAvatarPopup = document.querySelector(".edit-avatar-popup");
+const editAvatarForm = editAvatarPopup.querySelector(".popup__form_add");
 
 const configInfo = {
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__subtitle",
+  profileAvatarSelector: ".profile__avatar",
 };
 
 const validationConfig = {
@@ -66,4 +70,5 @@ export {
   validationConfig,
   editForm,
   addForm,
+  editAvatarForm,
 };

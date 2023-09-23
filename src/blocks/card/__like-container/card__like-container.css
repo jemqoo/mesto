@@ -1,0 +1,7 @@
+.card__like-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
