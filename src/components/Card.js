@@ -46,9 +46,7 @@ export default class Card {
   }
 
   _changeVisibleForTrashButton() {
-    this._myId === this._ownerId
-      ? (this._trashElement.style.display = "block")
-      : (this._trashElement.style.display = "none");
+    if (this._myId !== this._ownerId) this._trashElement.remove();
   }
 
   _checkLikeStatus() {
@@ -59,6 +57,10 @@ export default class Card {
       }
     });
     this._counter.textContent = this._likesLength;
+  }
+
+  isLiked() {
+    return this._likeIconElement.classList.contains("card__like-button_active");
   }
 
   toggleLike(likes) {

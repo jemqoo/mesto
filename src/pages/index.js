@@ -59,11 +59,10 @@ function createNewCard(item) {
     popupImage.open,
     deletePopupCard.open,
     (likeElement, cardId) => {
-      if (likeElement.classList.contains("card__like-button_active")) {
+      if (newCard.isLiked()) {
         api
           .deleteLike(cardId)
           .then((res) => {
-            console.log(res);
             newCard.toggleLike(res.likes);
           })
           .catch((error) =>
@@ -73,7 +72,6 @@ function createNewCard(item) {
         api
           .addLike(cardId)
           .then((res) => {
-            console.log(res);
             newCard.toggleLike(res.likes);
           })
           .catch((error) =>
@@ -107,9 +105,10 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (inputValues) => {
 });
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
-  Promise.all([api.getInfo(), api.addCard(data)])
-    .then(([dataUser, dataCard]) => {
-      dataCard.myid = dataUser._id;
+  api
+    .addCard(data)
+    .then((dataCard) => {
+      dataCard.myid = dataCard.owner._id;
       section.addItemPrepend(createNewCard(dataCard));
       popupAddCard.close();
     })
